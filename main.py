@@ -72,8 +72,10 @@ def verificar_licenca_remota():
 VERSAO_ATUAL = "1.0.0"
 
 def verificar_atualizacao():
+    id_usuario = gerar_id_unico()
+    verificar_atualizacao() 
     try:
-        url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vXXXXXX/pub?output=csv"  # substitua pelo seu link real
+        url = "https://github.com/ViinOliveira/Extractor.git"  # substitua pelo seu link real
         conteudo = requests.get(url, timeout=5).text.strip()
         if conteudo and conteudo != VERSAO_ATUAL:
             messagebox.showinfo("Atualização disponível",
