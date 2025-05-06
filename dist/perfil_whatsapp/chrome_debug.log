@@ -1,0 +1,10 @@
+[240:8484:0502/152705.510:INFO:components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc:202] No machine level policy manager exists.
+[11312:10220:0502/152705.795:WARNING:ui\gl\direct_composition_support.cc:1195] QueryInterface to IDCompositionDevice4 failed: Não há suporte para esta interface (0x80004002)
+[240:8484:0502/152706.455:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/153329.216:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/154313.543:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/155331.267:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/161704.759:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/161708.269:ERROR:components\device_event_log\device_event_log_impl.cc:202] [16:17:08.270] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Elemento não encontrado. (0x490)
+[240:8484:0502/161713.946:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)
+[240:8484:0502/161955.725:INFO:CONSOLE:157] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yU/r/fMbxHFEGncF.js (157)

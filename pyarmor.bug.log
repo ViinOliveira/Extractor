@@ -1,0 +1,12 @@
+[BUG]: no found input "app.py"
+
+## Command Line
+C:\Users\vicav\OneDrive\Área de Trabalho\catho_extractor\.venv\Scripts\pyarmor gen app.py
+
+## Environments
+Python 3.13.3
+Pyarmor 9.1.6 (trial), 000000, non-profits
+Platform windows.x86_64
+Native windows.amd64
+Home C:\Users\vicav\.pyarmor
+
