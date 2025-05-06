@@ -24,6 +24,7 @@ import json
 import uuid
 import hashlib
 import ctypes
+import urllib.request
 
 # Impede o Windows de suspender ou apagar a tela enquanto o app estiver rodando
 ES_CONTINUOUS = 0x80000000
@@ -72,17 +73,23 @@ def verificar_licenca_remota():
 VERSAO_ATUAL = "1.0.0"
 
 def verificar_atualizacao():
-    id_usuario = gerar_id_unico()
-    verificar_atualizacao() 
     try:
-        url = "https://github.com/ViinOliveira/Extractor.git"  # substitua pelo seu link real
+        url = "https://viinoliveira.github.io/Extractor/versao.txt"
         conteudo = requests.get(url, timeout=5).text.strip()
-        if conteudo and conteudo != VERSAO_ATUAL:
-            messagebox.showinfo("Atualização disponível",
-                                f"Você está usando a versão {VERSAO_ATUAL}.\n"
-                                f"A nova versão disponível é {conteudo}.\n\nAcesse o site para baixar a atualização.")
+
+        nova_versao, link_download = conteudo.split("|")
+        if nova_versao != VERSAO_ATUAL:
+            resposta = messagebox.askyesno("Atualização disponível",
+                f"Você está usando a versão {VERSAO_ATUAL}.\n"
+                f"Nova versão disponível: {nova_versao}\n\nDeseja baixar agora?")
+            if resposta:
+                destino = os.path.join(os.getcwd(), "CathoExtractor_novo.exe")
+                urllib.request.urlretrieve(link_download, destino)
+                messagebox.showinfo("Atualização", f"Nova versão salva como 'CathoExtractor_novo.exe'.\nExecute-a manualmente.")
+                sys.exit()
     except Exception as e:
         print(f"Falha ao verificar atualização: {e}")
+
 
 
 parar_envio = False
