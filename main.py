@@ -70,7 +70,7 @@ def verificar_licenca_remota():
                              f"Entre em contato pelo e-mail: innotehconsulting@gmail.com")
         sys.exit()
 
-VERSAO_ATUAL = "1.0.0"
+VERSAO_ATUAL = "1.0.1"
 
 def verificar_atualizacao():
     try:
