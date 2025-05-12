@@ -70,16 +70,54 @@ def verificar_licenca_remota():
                              f"Entre em contato pelo e-mail: innotehconsulting@gmail.com")
         sys.exit()
 
+def criar_config():
+    janela_config = tk.Tk()
+    janela_config.title("Configuração Inicial")
+
+    tk.Label(janela_config, text="Seu nome:").pack()
+    entry_nome = tk.Entry(janela_config)
+    entry_nome.pack()
+
+    tk.Label(janela_config, text="Nome da empresa:").pack()
+    entry_empresa = tk.Entry(janela_config)
+    entry_empresa.pack()
+
+    genero_var = tk.StringVar(value="masculino")
+    tk.Label(janela_config, text="Gênero:").pack()
+    tk.Radiobutton(janela_config, text="Masculino", variable=genero_var, value="masculino").pack()
+    tk.Radiobutton(janela_config, text="Feminino", variable=genero_var, value="feminino").pack()
+
+    def salvar():
+        dados = {
+            "nome_remetente": entry_nome.get().strip(),
+            "empresa": entry_empresa.get().strip(),
+            "genero": genero_var.get()
+        }
+        with open("config.json", "w", encoding="utf-8") as f:
+            json.dump(dados, f, indent=2, ensure_ascii=False)
+        janela_config.destroy()
+
+    tk.Button(janela_config, text="Salvar", command=salvar).pack(pady=10)
+    janela_config.mainloop()
+
+
 CONFIG_PATH = "config.json"
 
+# Se o arquivo não existir, cria com perguntas ao usuário
+if not os.path.exists(CONFIG_PATH):
+    criar_config()
+
+# Agora tenta carregar o conteúdo
 try:
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         config = json.load(f)
-        REMETENTE = config.get("remetente", "Gabriel")
+        REMETENTE = config.get("nome_remetente", "Gabriel")
         NOME_EMPRESA = config.get("empresa", "Batista & Camargo assessoria")
 except Exception as e:
     messagebox.showerror("Erro", f"Erro ao carregar configurações:\n{e}")
     sys.exit()
+
+
 
 
 VERSAO_ATUAL = "1.0.2"
@@ -298,7 +336,7 @@ def enviar_whatsapp_em_lote():
                     continue
 
                 pronome = "o" if config.get("genero", "").lower() == "masculino" else "a"
-                
+
                 mensagem = f"""Boa tarde {nome} tudo bem? Sou {pronome} {REMETENTE}, da {NOME_EMPRESA}, o motivo do meu contato é referente a empresa,
 
 
