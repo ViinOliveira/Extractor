@@ -1,1 +1,1 @@
-1.0.1|https://github.com/ViinOliveira/Extractor/releases/download/v1.0.1/CathoExtractor.exe
+1.0.2|https://github.com/ViinOliveira/Extractor/releases/download/1.0.2/CathoExtractor.exe

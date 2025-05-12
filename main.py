@@ -70,7 +70,19 @@ def verificar_licenca_remota():
                              f"Entre em contato pelo e-mail: innotehconsulting@gmail.com")
         sys.exit()
 
-VERSAO_ATUAL = "1.0.1"
+CONFIG_PATH = "config.json"
+
+try:
+    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+        config = json.load(f)
+        REMETENTE = config.get("remetente", "Gabriel")
+        NOME_EMPRESA = config.get("empresa", "Batista & Camargo assessoria")
+except Exception as e:
+    messagebox.showerror("Erro", f"Erro ao carregar configurações:\n{e}")
+    sys.exit()
+
+
+VERSAO_ATUAL = "1.0.2"
 
 def verificar_atualizacao():
     try:
@@ -285,7 +297,10 @@ def enviar_whatsapp_em_lote():
                 if len(numero) < 10:
                     continue
 
-                mensagem = f"""Boa tarde {nome} tudo bem? Sou o Gabriel, da Batista & Camargo assessoria, o motivo do meu contato é referente a empresa,
+                pronome = "o" if config.get("genero", "").lower() == "masculino" else "a"
+                
+                mensagem = f"""Boa tarde {nome} tudo bem? Sou {pronome} {REMETENTE}, da {NOME_EMPRESA}, o motivo do meu contato é referente a empresa,
+
 
             {empresa}
 
