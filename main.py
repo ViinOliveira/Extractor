@@ -348,7 +348,17 @@ def enviar_whatsapp_em_lote():
 
                 link = f"https://web.whatsapp.com/send?phone=55{numero}&text={quote(mensagem)}"
                 driver.get(link)
-                time.sleep(8)
+
+                try:
+                    # Espera até que o campo de mensagem esteja presente (evita pular mensagens)
+                    WebDriverWait(driver, 15).until(
+                        EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"]'))
+                    )
+                except:
+                    print(f"[{idx+1}] ⚠️ Campo de texto não carregou para {nome}. Pulando.")
+                    continue
+
+                time.sleep(5)  # Pequeno tempo para garantir o carregamento da interface
 
                 conversa_existente = False
                 try:
@@ -383,6 +393,7 @@ def enviar_whatsapp_em_lote():
 
                     if enviar_btn:
                         enviar_btn.click()
+                        time.sleep(1)  # Espera um pouquinho após o clique
                         print(f"[{idx+1}/{len(candidatos_para_enviar)}] ✅ Mensagem enviada para {nome}")
                         enviados.append(c)
                         salvar_enviados(enviados)
@@ -399,8 +410,8 @@ def enviar_whatsapp_em_lote():
                 janela.update_idletasks()
 
                 if idx < len(candidatos_para_enviar) - 1:
-                    print("Aguardando 5 minutos...")
-                    time.sleep(300)
+                    print("Aguardando 2 minutos...")
+                    time.sleep(138)
 
 
         except Exception as erro:
@@ -454,6 +465,8 @@ btn_excluir.grid(row=0, column=3, padx=10)
 
 btn_parar = tk.Button(frame_botoes, text="Parar Envio", command=parar_envio_func, width=20)
 btn_parar.grid(row=0, column=4, padx=10)
+
+
 
 # Tabela de candidatos
 colunas = ("nome", "telefone", "empresa", "periodo")
